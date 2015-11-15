@@ -261,7 +261,7 @@ public class UserDaoImp implements UserDao {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection mysqlConnect = connection.connect();
 			/** Update the table users */
-			ps = mysqlConnect.prepareStatement("UPDATE users SET ime=?, prezime=?, telefon=?, adresa=?, email=?, rodjenje=?, pol=?, password=?, WHERE username='"
+			ps = mysqlConnect.prepareStatement("UPDATE users SET ime=?, prezime=?, telefon=?, adresa=?, email=?, rodjenje=?, pol=?, username=?, password=?, WHERE username='"
 					+ user.getUsername() + "'");
 			
 			ps.setString(1, user.getIme());

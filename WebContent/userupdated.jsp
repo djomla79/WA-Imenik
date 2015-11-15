@@ -7,7 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Brisanje korisnika</title>
+<title>Update korisnika</title>
 <!-- Bootstrap -->
 <link href="bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css-data/userloged.css">
@@ -37,7 +37,7 @@
 	</div>
 	
 	<div class="container">
-		<div id="header1">Korisnik ${user.ime} ${user.prezime} uspjesno obrisan.</div>
+		<div id="header1">Korisnik ${user.ime} ${user.prezime} uspjesno update-ovan.</div>
 	</div>
 	 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

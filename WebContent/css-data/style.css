@@ -4,7 +4,7 @@ body {
    background-color: #ccc;
 }
 .jumbotron {
-   background-color: #1f1b1b;
+   
 }
 div#h2 {
    text-align: center;
@@ -48,6 +48,19 @@ div#header1 {
    margin-top: 5px;
    background-color: #eee;
 }
+#header {
+	text-align: center;
+   font-size: 23px;
+   font-family: Vijaya;
+   border-top: 15px solid gray;
+   border-bottom: 15px solid gray;
+   border-left: 2px solid gray;
+   border-right: 2px solid gray;
+   border: 1px solid gray;
+   border-radius: 3px;
+   padding: 1px;
+   background-color: #eee;
+}
 .header {
    text-align: center;
    font-size: 23px;
@@ -60,7 +73,6 @@ div#header1 {
    border-radius: 3px;
    padding: 1px;
    background-color: #eee;
-   height: 80px;
 }
 .container {
    border: 1px solid gray;

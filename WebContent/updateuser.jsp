@@ -8,41 +8,36 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Pretraga</title>
+<title>Update user</title>
 <!-- Bootstrap -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css-data/style.css">
 </head>
 <body>
-     <nav class="navbar navbar-inverse" style="border-radius: 0px;">
+     <nav class="navbar navbar-inverse">
 	  <div class="container-fluid">
-	    <div class="navbar-header">
-	      <a class="navbar-brand" style="color: #e3e3e3;" href="#">Imenik</a>
-	    </div>
 	    <div>
 	      <ul class="nav navbar-nav">
-	        <li><a href="userpage.jsp">User Page</a></li>
- 	    <li><a href="logout"></a></li>
+	        <li><a href="admin.jsp">Admin Page</a></li>
  	    </ul>
 	    </div>
 	  </div>
 	</nav>
 	
+	<div class="container" >
      <div id="header">
-     <h1>Pretraga</h1>
+     <h1>Update korisnika</h1>
   </div>
-    <div class="row">
-    <div class="well">Unesite (ime, prezime, telefon, adresu, datum rodjenja ili pol korisnika) </div>
-     </div>
+  </div>
+    <div class="well"><h4>Unos Korisnika kojeg zelimo update-ovati</h4></div>
      
     <div class="container" >
       <div class="container1">
      
-      <form action="SearchServlet" method="post">
-          
-          <div class="row">Search <br /><input type="text" name="search" placeholder="Search" required></div><br />
-         
-          
+      <form action="UpdateServletUsername" method="post">
+      
+          <div class="row">Unesite korisnicko ime<br />
+          <input type="text" name="username" placeholder="Korisnicko ime" required></div><br />
           <button class="btn btn-lg btn-primary btn-block" type="submit">Potvrdi</button> 
           
       </form>

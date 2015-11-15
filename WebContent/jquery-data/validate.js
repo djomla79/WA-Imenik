@@ -1,4 +1,4 @@
-$("document").ready(function() {
+$(function() {
 	
 	$("#jq").validate({
 		rules: {
@@ -34,6 +34,7 @@ $("document").ready(function() {
 			},
 			pol: {
 				required: true,
+				lettersonly: true,
 				minlength: 5,
 				maxlength: 6
 			},
@@ -50,16 +51,47 @@ $("document").ready(function() {
 		},
 		messages: {
 			ime: {
-				lettersonly: "Unesite samo slova!"
+				required: "Unesite vase ime!",
+				lettersonly: "Unesite samo slova!",
+				minlength: "Unesite minimalno 3 karaktera!",
+				maxlength: "Unesite maximalno 20 karaktera!"
 			},
 			prezime: {
-				lettersonly: "Unesite samo slova!"
+				required: "Unesite vase ime!",
+				lettersonly: "Unesite samo slova!",
+				minlength: "Unesite minimalno 4 karaktera!",
+				maxlength: "Unesite maximalno 20 karaktera!"
 			},
 			telefon: {
-				digits: "Unesite samo brojeve!"
+				digits: "Unesite samo brojeve!",
+				required: "Unesite vas broj telefona!",
+				minlength: "Unesite minimalno 6 karaktera!",
+				maxlength: "Unesite maximalno 12 karaktera!"
+			},
+			adresa: {
+				required: "Unesite vasu adresu!",
+				minlength: "Unesite minimalno 5 karaktera!",
+				maxlength: "Unesite maximalno 20 karaktera!"
+			},
+			email: {
+				required: "Unesite vasu email adresu!",
+				email: "Unesite ispravno email adresu!"
 			},
 			pol: {
-				lettersonly: "Unesite pol, musko - zensko!"
+				required: "Unesite vas pol!",
+				lettersonly: "Unesite samo slova!",
+				minlength: "Unesite minimalno 5 karaktera!",
+				maxlength: "Unesite maximalno 6 karaktera!"
+			},
+			username: {
+				required: "Unesite vase korisnicko ime!",
+				minlength: "Unesite minimalno 5 karaktera!",
+				maxlength: "Unesite maximalno 15 karaktera!"
+			},
+			password: {
+				required: "Unesite vasu lozinku!",
+				minlength: "Unesite minimalno 8 karaktera!",
+				maxlength: "Unesite maximalno 15 karaktera!"
 			}
 		}
 	});

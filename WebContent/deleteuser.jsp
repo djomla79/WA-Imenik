@@ -11,15 +11,24 @@
 <!-- Bootstrap -->
 <link href="bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css-data/style.css">
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-      <script src="js/html5shiv.min.js"></script>
-      <script src="js/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body>
-    <div class="header">
+
+    <nav class="navbar navbar-inverse" style="border-radius: 0px;">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" style="color: #e3e3e3;" href="#">Imenik</a>
+	    </div>
+	    <div>
+	      <ul class="nav navbar-nav">
+	        <li><a href="admin.jsp">Admin Page</a></li>
+ 	    <li><a href="logout"></a></li>
+ 	    </ul>
+	    </div>
+	  </div>
+	</nav>
+
+    <div id="header">
      <h1>Brisanje korisnika</h1>
      </div>
      

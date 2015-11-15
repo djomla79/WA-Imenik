@@ -12,12 +12,6 @@
 <!-- Bootstrap -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="css-data/style.css">
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-      <script src="js/html5shiv.min.js"></script>
-      <script src="js/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body>
     
@@ -31,7 +25,6 @@
 				<li><a href="GetAllUsersServlet">Lista svih korisnika</a></li>
 				<li><a href="getuser.jsp">Ispis korisnika po imenu i prezimenu</a></li>
 				<li><a href="deleteuser.jsp">Brisanje korisnika</a></li>
-				<li><a href="search.jsp">Pretraga</a></li>
 				<li><a href="updateuser.jsp">Update korisnika</a></li>
 			</ul>
 		</div>
