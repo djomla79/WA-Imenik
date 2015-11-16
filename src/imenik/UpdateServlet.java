@@ -49,9 +49,6 @@ public class UpdateServlet extends HttpServlet {
 				user.setPassword(password);
 				dao.updateUser(user);
 				
-				List<User> lista = dao.getAllUsers();
-				request.setAttribute("lista", lista);
-				
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			}
