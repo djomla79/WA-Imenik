@@ -8,9 +8,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Delete User</title>
-<!-- Bootstrap -->
-<link href="bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="css-data/style.css">
+    <link href="bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css-data/style.css">
+    <!-- jQuery for Bootstrap and jQuery validation -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
+    <script src ="//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script> 
+	<script src="jquery-data/validate.js"></script>
 </head>
 <body>
 
@@ -38,18 +42,18 @@
     <div class="container" >
       <div class="container1">
      
-      <form action="DeleteUserServlet" method="post">
+      <form action="DeleteUserServlet" method="post" id="delete">
           
-          <div class="row">Korisnicko ime: <br /><input type="text" name="username" placeholder="Korisnicko ime" required></div><br />
+          <div class="row">
+          <label for="username">Korisnicko ime:</label> <br />
+          <input type="text" name="username" placeholder="Korisnicko ime">
+          </div><br />
           
           <button class="btn btn-md btn-primary btn-block" type="submit">Potvrdi</button> 
           
       </form>
       </div>
     </div>
-     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    
 </body>
 </html>
