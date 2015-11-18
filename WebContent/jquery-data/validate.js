@@ -116,7 +116,7 @@ $('document').ready(function() {
 		rules: {
 			username: {
 				required: true,
-				rangelength:[5,16]
+				rangelength:[4,16]
 			},
 			password: {
 				required: true,
@@ -133,7 +133,7 @@ $('document').ready(function() {
 		messages: {
 			username: {
 				required: "Unesite vase korisnicko ime.",
-				rangelength: "Unesite izmedju 5 i 16 karaktera."
+				rangelength: "Unesite izmedju 4 i 16 karaktera."
 			},
 			password: {
 				required: "Unesite vasu lozinku.",
