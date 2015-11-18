@@ -34,7 +34,13 @@ body {
   display: block;
   margin-left: 5px;
 }
-
+#search label.error {
+  font-size: 0.8em;
+  color: #F00;
+  font-weight: bold;
+  display: block;
+  margin-left: 5px;
+}
 div#h2 {
    text-align: center;
    font-size: 23px;
