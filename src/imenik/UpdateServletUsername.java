@@ -24,18 +24,18 @@ public class UpdateServletUsername extends HttpServlet {
 		try {
 			
 			UserDao dao = new UserDaoImp();
-			User user = new User();
+			
 			Service service = new Service();
 			
 			boolean ok = service.authenticate2(username);
 			
 			if (ok) {
-				user = dao.getUser(username);
+				User user = dao.getUser(username);
 				request.setAttribute("user", user);
 				request.getRequestDispatcher("updatinguser.jsp").forward(request, response);
 			} else {
-				System.out.println("Korisnik " + username + " se ne nalazi u bazi.");
-				response.sendRedirect("updateuser.jsp");
+				request.setAttribute("message", "Korisnik pod korisnickim imenom '" + username + "' se ne nalazi u bazi.");
+				request.getRequestDispatcher("updateuser.jsp").forward(request, response);
 			}
 
 		} catch (Exception e) {

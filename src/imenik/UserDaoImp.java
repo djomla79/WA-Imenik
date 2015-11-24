@@ -71,21 +71,19 @@ public class UserDaoImp implements UserDao {
 			ps = mysqlConnect
 					.prepareStatement("SELECT * FROM users WHERE ime ='" + ime + "', prezime ='" + prezime + "' ");
 			ResultSet rs = ps.executeQuery();
-
-			if (rs.next()) {
-				rs.beforeFirst();
-				while (rs.next()) {
-					user.setIme(rs.getString("ime"));
-					user.setPrezime(rs.getString("prezime"));
-					user.setTelefon(rs.getString("telefon"));
-					user.setAdresa(rs.getString("adresa"));
-					user.setEmail(rs.getString("email"));
-					user.setRodjenje(rs.getString("rodjenje"));
-					user.setPol(rs.getString("pol"));
-					user.setUsername(rs.getString("username"));
-					user.setPassword(rs.getString("password"));
-				}
+			
+			while (rs.next()) {
+				user.setIme(rs.getString("ime"));
+				user.setPrezime(rs.getString("prezime"));
+				user.setTelefon(rs.getString("telefon"));
+				user.setAdresa(rs.getString("adresa"));
+				user.setEmail(rs.getString("email"));
+				user.setRodjenje(rs.getString("rodjenje"));
+				user.setPol(rs.getString("pol"));
+				user.setUsername(rs.getString("username"));
+				user.setPassword(rs.getString("password"));
 			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

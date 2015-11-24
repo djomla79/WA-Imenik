@@ -44,7 +44,8 @@
 	          <label for="pol">Pol: </label><br />
 	          <input type="text" name="pol" placeholder="Pol" class="required" title="Unesite svoj pol: musko - zensko."><br />
 	          <label for="username">Korisnicko ime: </label><br />
-	          <input type="text" name="username" placeholder="Korisnicko ime"><br />
+	          <input type="text" name="username" placeholder="Korisnicko ime" id="username"><br />
+	          <p id="response"></p>
 	          <label for="password">Lozinka: </label><br />
 	          <input type="password" name="password" placeholder="Lozinka">
           </div><br />

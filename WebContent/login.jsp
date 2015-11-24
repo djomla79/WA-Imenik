@@ -20,15 +20,19 @@
     <div class="container">
 
       <form action="loginservlet" method="post" class="form-login" id="login">
-        <h2 class="form-login-heading">Unesite korisnicko ime i lozinku</h2>
-        <label for="username">Korisnicko ime:</label><br />
-        <input type="text" name="username" placeholder="korisnicko ime"><br />
-        <label for="password">Lozinka: </label><br />
-        <input type="password" name="password" placeholder="lozinka"><br />
-        
-        <button class="btn btn-md btn-primary btn-block" type="submit">Log in</button>
+	       <h2 class="form-login-heading">Unesite korisnicko ime i lozinku</h2>
+	       <label for="username">Korisnicko ime:</label><br />
+	       <input type="text" name="username" placeholder="korisnicko ime"><br />
+	       <label for="password">Lozinka: </label><br />
+	       <input type="password" name="password" placeholder="lozinka"><br />
+	        
+	       <button class="btn btn-md btn-primary btn-block" type="submit">Log in</button>
       </form>
-
+      
+      <div id="message">
+        <c:out value="${message}" />
+      </div>
+      
     </div>
     
 </body>

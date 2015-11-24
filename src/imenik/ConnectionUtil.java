@@ -5,6 +5,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * @author Todorovic Mladen
+ * 
+ * @class ConnectionUtil za povezivanje sa bazom
+ *
+ */
 public class ConnectionUtil {
 
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";

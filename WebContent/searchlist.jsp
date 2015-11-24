@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="imenik.User" import="java.util.*"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +22,7 @@
 	    <div>
 	      <ul class="nav navbar-nav">
 	        <li><a href="userpage.jsp">User page</a></li>
- 	    <li><a href="logout"></a></li>
+	        <li><a href="/WA-Imenik/LogOutServlet">Odjava</a></li>
  	    </ul>
 	    </div>
 	  </div>

@@ -41,7 +41,8 @@ public class SearchServlet extends HttpServlet {
 			request.setAttribute("searchusers", list);
 			request.getRequestDispatcher("searchlist.jsp").forward(request, response);
 		} else {
-			response.sendRedirect("search.jsp");
+			request.setAttribute("message", "Unos ne postoji u bazi.");
+			request.getRequestDispatcher("search.jsp").forward(request, response);
 		}
 		
 	}

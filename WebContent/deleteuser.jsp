@@ -26,7 +26,7 @@
 	    <div>
 	      <ul class="nav navbar-nav">
 	        <li><a href="admin.jsp">Admin Page</a></li>
- 	    <li><a href="logout"></a></li>
+	        <li><a href="/WA-Imenik/LogOutServlet">Odjava</a></li>
  	    </ul>
 	    </div>
 	  </div>
@@ -45,8 +45,8 @@
       <form action="DeleteUserServlet" method="post" id="delete">
           
           <div class="row">
-          <label for="username">Korisnicko ime:</label> <br />
-          <input type="text" name="username" placeholder="Korisnicko ime">
+	          <label for="username">Korisnicko ime:</label> <br />
+	          <input type="text" name="username" placeholder="Korisnicko ime">
           </div><br />
           
           <button class="btn btn-md btn-primary btn-block" type="submit">Potvrdi</button> 

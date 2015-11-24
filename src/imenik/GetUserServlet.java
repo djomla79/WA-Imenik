@@ -23,7 +23,6 @@ public class GetUserServlet extends HttpServlet {
 
 		String ime, prezime;
 		UserDao dao = new UserDaoImp();
-		User user = new User();
 		Service service = new Service();
 		
 		ime = request.getParameter("ime");
@@ -32,14 +31,12 @@ public class GetUserServlet extends HttpServlet {
 		boolean ok = service.imePrezime(ime, prezime);
 		
 		if (ok) {
-			user = dao.getUserByName(ime, prezime);
-			request.setAttribute("list", user);
-			//response.sendRedirect("listuser.jsp");
+			User user = dao.getUserByName(ime, prezime);
+			request.setAttribute("user", user);
 			request.getRequestDispatcher("listuser.jsp").forward(request, response);
-			//RequestDispatcher dis = request.getRequestDispatcher("listuser.jsp");
-			//dis.forward(request, response);
 		} else {
-			response.sendRedirect("getuser.jsp");
+			request.setAttribute("message", "Trazeni " + ime + " " + prezime + " ne postoji u bazi.");
+			request.getRequestDispatcher("getuser.jsp").forward(request, response);
 		}
 
 	}

@@ -24,6 +24,7 @@
 	    <div>
 	      <ul class="nav navbar-nav">
 	        <li><a href="admin.jsp">Admin Page</a></li>
+	        <li><a href="/WA-Imenik/LogOutServlet">Odjava</a></li>
  	    </ul>
 	    </div>
 	  </div>

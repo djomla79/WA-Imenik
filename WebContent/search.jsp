@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="imenik.User" import="java.sql.*"%>
-	<%@ page import="imenik.UserDaoImp" import="java.util.*"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	pageEncoding="ISO-8859-1" import="imenik.User" import="java.sql.*"
+	import="imenik.UserDaoImp" import="java.util.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,18 +27,18 @@
 	    <div>
 	      <ul class="nav navbar-nav">
 	        <li><a href="userpage.jsp">User Page</a></li>
- 	    <li><a href="logout"></a></li>
+	        <li><a href="/WA-Imenik/LogOutServlet">Odjava</a></li>
  	    </ul>
 	    </div>
 	  </div>
 	</nav>
 	
-     <div id="header">
-     <h1>Pretraga</h1>
-  </div>
+    <div id="header">
+       <h1>Pretraga</h1>
+    </div>
     <div class="row">
-    <div class="well">Unesite (ime, prezime, telefon, adresu, datum rodjenja ili pol korisnika) </div>
-     </div>
+       <div class="well">Unesite (ime, prezime, telefon, adresu, datum rodjenja ili pol korisnika)</div>
+    </div>
      
     <div class="container" >
       <div class="container1">
@@ -46,13 +46,18 @@
       <form action="SearchServlet" method="post" id="search">
           
           <div class="row">
-          <label>Search</label><br />
-          <input type="text" name="search" placeholder="Search">
+	         <label>Search</label><br />
+	         <input type="text" name="search" placeholder="Search">
           </div><br />
           
           <button class="btn btn-lg btn-primary btn-block" type="submit">Potvrdi</button> 
           
       </form>
+      
+      <div id="message">
+          <c:out value="${message}" />
+      </div>
+      
       </div>
     </div>
      

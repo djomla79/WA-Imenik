@@ -1,7 +1,6 @@
 package imenik;
 
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,17 +35,17 @@ public class LoginServlet extends HttpServlet {
 		
 		if (isOk) {
 			user = dao.getUser(username);
-			request.getServletContext().setAttribute("admin", user);
+			request.getSession().setAttribute("admin", user);
 			request.getRequestDispatcher("admin.jsp").forward(request, response);
 		} else {
 			if (ok) {
 				user = dao.getUser(username);
 				request.getSession().setAttribute("user", user);
-				RequestDispatcher dis = request.getRequestDispatcher("userpage.jsp");
-				dis.forward(request, response);
+				request.getRequestDispatcher("userpage.jsp").forward(request, response);
 				return;
 			} else {
-				response.sendRedirect("login.jsp");
+				request.setAttribute("message", "Korisnik ne postoji u bazi.");
+				request.getRequestDispatcher("login.jsp").forward(request, response);
 				return;
 			}
 		}

@@ -39,10 +39,10 @@ public class DeleteUserServlet extends HttpServlet {
 			user = dao.getUser(username);
 			dao.deleteUser(username);
 			request.setAttribute("user", user);
-			request.getRequestDispatcher("userdeleted.jsp").forward(request, response);
-			//response.sendRedirect("userdeleted.jsp");						
+			request.getRequestDispatcher("userdeleted.jsp").forward(request, response);					
 		} else {
-			response.sendRedirect("userpage.jsp");			
+			request.setAttribute("message", "Korisnik ne postoji u bazi.");
+			request.getRequestDispatcher("userpage.jsp").forward(request, response);			
 		}
 		
 	}

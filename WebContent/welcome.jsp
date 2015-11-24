@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1" import="imenik.User" import="java.sql.*"%>
+	<%@ page import="imenik.UserDaoImp" import="java.util.*"%>
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -8,9 +9,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Dobrodosli u imenik aplikaciju</title>
-<!-- Bootstrap -->
-<link href="bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="css-data/style.css">
+   <!-- Bootstrap -->
+   <link href="bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" type="text/css" href="css-data/style.css">
+   <!-- jQuery for Bootstrap and jQuery validation -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+   <script src="bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -33,10 +37,9 @@
 		</div>
 	</div>
 	
-	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="js/bootstrap.min.js"></script>
+	<div id="message">
+	    <c:out value="${message}" />
+	</div>
+	
 </body>
 </html>

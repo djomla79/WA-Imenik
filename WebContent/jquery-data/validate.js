@@ -266,4 +266,48 @@ $('document').ready(function() {
 			}
 		}
 	});
+	$("#getuser").validate({
+		rules: {
+			ime: {
+				required: true,
+				lettersonly: true,
+				rangelength:[3,16]
+			},
+			prezime: {
+				required: true,
+				lettersonly: true,
+				rangelength:[4,16]
+			}
+		},
+		errorPlacement: function(error, element) { 
+		       
+		          error.insertAfter(element);
+		        
+		    },
+		messages: {
+			ime: {
+				required: "Unesite ime trazenog korisnika.",
+				lettersonly: "Unesite samo slova.",
+				rangelength: "Unesite izmedju 3 i 16 karaktera."
+			},
+			prezime: {
+				required: "Unesite prezime trazenog korisnika.",
+				lettersonly: "Unesite samo slova.",
+				rangelength: "Unesite izmedju 4 i 16 karaktera."
+			}
+		}
+	});
+	$("#username").blur(function() {
+
+		var username = $("#username").val();
+
+		$.ajax({
+			url: "UsernameAjaxCheck",
+			method:"POST",
+			data: { username: username }
+		}).done(function(response){
+			$("#response").html(response);
+		});
+		
+	});
 });
