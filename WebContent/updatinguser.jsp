@@ -56,6 +56,8 @@
               <input type="text" name="rodjenje" placeholder="${user.rodjenje}"><br />
               <label>Pol: </label><br />
               <input type="text" name="pol" placeholder="${user.pol}"><br />
+              <label>Korisnicko ime: </label><br />
+              <input type="text" name="username" placeholder="${user.username}"><br />
               <label>Lozinka: </label><br />
               <input type="password" name="password" placeholder="${user.password}">
           </div><br />
@@ -63,6 +65,7 @@
           <button class="btn btn-lg btn-primary btn-block" type="submit">Potvrdi</button> 
           
       </form>
+      
       </div>
     </div>
     

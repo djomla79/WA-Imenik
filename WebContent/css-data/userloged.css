@@ -83,3 +83,15 @@ div#log {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+#message {
+	color: green;
+	text-align: center;
+	font-size: 20px;
+	padding-left: 5px;
+}
+#message1 {
+	color: red;
+	text-align: center;
+	font-size: 20px;
+	padding-left: 5px;
+}

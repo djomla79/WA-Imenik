@@ -32,7 +32,15 @@ public class UpdateServlet extends HttpServlet {
 		pol = request.getParameter("pol");
 		username = request.getParameter("username");
 		password = request.getParameter("password");
+		ime = ime.substring(0,1).toUpperCase() + ime.substring(1, ime.length()).toLowerCase();
+		prezime = prezime.substring(0,1).toUpperCase() + prezime.substring(1, prezime.length()).toLowerCase();
+		adresa = adresa.substring(0,1).toUpperCase() + adresa.substring(1, adresa.length()).toLowerCase();
+		pol = pol.substring(0,1).toUpperCase() + pol.substring(1, pol.length()).toLowerCase();
 		
+		Service service = new Service();
+		boolean ok = service.authenticate2(username);
+		
+		if (ok) {
 			try {
 			    
 				user.setIme(ime);
@@ -50,8 +58,11 @@ public class UpdateServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-			request.setAttribute("user", user);
+			request.setAttribute("message", "Korisnik " + ime + " " + prezime + " uspjesno update-ovan.");
 			request.getRequestDispatcher("userupdated.jsp").forward(request, response);
-		
+		} else {
+			request.setAttribute("message1", "Korisnik " + ime + " " + prezime + " nije update-ovan.");
+			request.getRequestDispatcher("userupdated.jsp").forward(request, response);
+		}
 	}
 }

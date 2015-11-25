@@ -32,23 +32,24 @@ public class SignupServlet extends HttpServlet {
 		pol = request.getParameter("pol");
 		username = request.getParameter("username");
 		password = request.getParameter("password");
+		ime = ime.substring(0,1).toUpperCase() + ime.substring(1, ime.length()).toLowerCase();
+		prezime = prezime.substring(0,1).toUpperCase() + prezime.substring(1, prezime.length()).toLowerCase();
+		adresa = adresa.substring(0,1).toUpperCase() + adresa.substring(1, adresa.length()).toLowerCase();
+		pol = pol.substring(0,1).toUpperCase() + pol.substring(1, pol.length()).toLowerCase();
+		username = username.toLowerCase();
 
 		UserDao dao = new UserDaoImp();
-		//User user = new User();
 
 		Service service = new Service();
 		boolean ok = service.authenticate2(username);
-		//boolean ok2 = service.imePrezime(ime, prezime);
 
 		if (!ok) {
 			dao.addUser(ime, prezime, telefon, adresa, email, rodjenje, pol, username, password);
-			//user = dao.getUser(username);
-			//request.getSession().setAttribute("user", user);
-			response.sendRedirect("welcome.jsp");
-			//RequestDispatcher dis = request.getRequestDispatcher("userpage.jsp");
-			//dis.forward(request, response);
+			request.setAttribute("message", "Cestitamo, uspjesno ste napravili svoj nalog.");
+			request.getRequestDispatcher("welcome.jsp").forward(request, response);
 		} else {
-			response.sendRedirect("welcome.jsp");
+			request.setAttribute("message1", "Zao nam je, pokusajte ponovo.");
+			request.getRequestDispatcher("welcome.jsp").forward(request, response);
 		}
 	}
 }

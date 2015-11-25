@@ -40,6 +40,9 @@
 	<div id="message">
 	    <c:out value="${message}" />
 	</div>
+	<div id="message1">
+	    <c:out value="${message1}" />
+	</div>
 	
 </body>
 </html>

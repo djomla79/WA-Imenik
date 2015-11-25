@@ -259,7 +259,8 @@ public class UserDaoImp implements UserDao {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection mysqlConnect = connection.connect();
 			/** Update the table users */
-			ps = mysqlConnect.prepareStatement("UPDATE users SET ime=?, prezime=?, telefon=?, adresa=?, email=?, rodjenje=?, pol=?, username=?, password=?, WHERE username='"
+			ps = mysqlConnect.prepareStatement(
+					"UPDATE users SET ime=?, prezime=?, telefon=?, adresa=?, email=?, rodjenje=?, pol=?, username=?, password=? WHERE username='"
 					+ user.getUsername() + "'");
 			
 			ps.setString(1, user.getIme());
@@ -274,7 +275,6 @@ public class UserDaoImp implements UserDao {
 			ps.executeUpdate();
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			try {
@@ -471,7 +471,7 @@ public class UserDaoImp implements UserDao {
 
 	@Override
 	public List<User> searchUsers(String search) {
-		// TODO Auto-generated method stub
+		
 		List<User> list = new ArrayList<>();
 		/**
 		 * Invoke ConnectionUtil Class to establish MySQL connection with the DB

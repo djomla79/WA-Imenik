@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 		
 		if (isOk) {
 			user = dao.getUser(username);
-			request.getSession().setAttribute("admin", user);
+			request.getServletContext().setAttribute("admin", user);
 			request.getRequestDispatcher("admin.jsp").forward(request, response);
 		} else {
 			if (ok) {

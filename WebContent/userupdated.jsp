@@ -36,9 +36,14 @@
 		</div>
 	</div>
 	
-	<div class="container">
-		<div id="header1">Korisnik ${user.ime} ${user.prezime} uspjesno update-ovan.</div>
+	<div id="message">
+		<c:out value="${message}" />
 	</div>
+	
+	<div id="message1">
+		<c:out value="${message1}" />
+	</div>
+	
 	 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

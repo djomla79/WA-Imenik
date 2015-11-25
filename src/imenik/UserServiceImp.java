@@ -28,9 +28,9 @@ public class UserServiceImp implements UserService {
 	public boolean validateLogin(String username, String password) throws SQLException {
 		
 		boolean correct = false;
-		UserDao udao = new UserDaoImp();
+		UserDao dao = new UserDaoImp();
 		
-		List <User> list = udao.getAllUsers();
+		List <User> list = dao.getAllUsers();
 		if (list.contains(username)) {
 			if (list.contains(password)) {
 				correct = true;
