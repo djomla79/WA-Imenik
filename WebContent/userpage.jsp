@@ -39,7 +39,6 @@
 		</div>
 		<div id="log">
 			<ul>
-				<li><a href="getuser.jsp">Ispis korisnika po imenu i prezimenu</a></li>
 				<li><a href="search.jsp">Pretraga</a></li>
 			</ul>
 		</div>
