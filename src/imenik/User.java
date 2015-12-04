@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class User {
 	
+	/** Private fields */
 	private String ime;
 	private String prezime;
 	private String telefon;
@@ -21,9 +22,10 @@ public class User {
 	private String username;
 	private String password;
 	
+	/** List of User object */
 	List<User> list = new ArrayList<User>();
 	
-	/** Geteri i seteri */
+	/** Geters & seters */
 	public String getIme() {
 		return ime;
 	}

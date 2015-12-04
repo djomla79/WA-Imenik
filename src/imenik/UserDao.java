@@ -10,6 +10,7 @@ import java.util.List;
  */
 public interface UserDao {
 	
+	/** Abstract methods */
 	public void addUser(String ime, String prezime, String telefon, String adresa,
             String email, String rodjenje, String pol, String username, String password);
 	

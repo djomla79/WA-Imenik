@@ -23,6 +23,7 @@ public class UpdateServlet extends HttpServlet {
 		UserDao dao = new UserDaoImp();
 		User user = new User();
 		
+		/** Get all parameters */
 		ime = request.getParameter("ime");
 		prezime = request.getParameter("prezime");
 		telefon = request.getParameter("telefon");
@@ -38,9 +39,10 @@ public class UpdateServlet extends HttpServlet {
 		pol = pol.substring(0,1).toUpperCase() + pol.substring(1, pol.length()).toLowerCase();
 		
 		Service service = new Service();
+		/** Check if user with this username is in the DB */
 		boolean ok = service.authenticate2(username);
 		
-		if (ok) {
+		if (ok) { // if user is in the DB, set all new parameters to user (update user)
 			try {
 			    
 				user.setIme(ime);
@@ -57,10 +59,10 @@ public class UpdateServlet extends HttpServlet {
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			}
-			
+			      // send message that user is successfully updated to userupdated.jsp
 			request.setAttribute("message", "Korisnik " + ime + " " + prezime + " uspjesno update-ovan.");
 			request.getRequestDispatcher("userupdated.jsp").forward(request, response);
-		} else {
+		} else {  // if user isn't in the DB, send message to userupdated.jsp
 			request.setAttribute("message1", "Korisnik " + ime + " " + prezime + " nije update-ovan.");
 			request.getRequestDispatcher("userupdated.jsp").forward(request, response);
 		}

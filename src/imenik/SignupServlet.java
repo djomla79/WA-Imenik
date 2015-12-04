@@ -23,6 +23,7 @@ public class SignupServlet extends HttpServlet {
 
 		String ime, prezime, telefon, adresa, email, rodjenje, pol, username, password;
 		
+		/** Get all parameters */
 		ime = request.getParameter("ime");
 		prezime = request.getParameter("prezime");
 		telefon = request.getParameter("telefon");
@@ -41,13 +42,14 @@ public class SignupServlet extends HttpServlet {
 		UserDao dao = new UserDaoImp();
 
 		Service service = new Service();
+		/** Check if user with this username exists in the DB */
 		boolean ok = service.authenticate2(username);
 
-		if (!ok) {
+		if (!ok) { // if user isn't in the DB, add new user in the DB, send message to welcome.jsp
 			dao.addUser(ime, prezime, telefon, adresa, email, rodjenje, pol, username, password);
 			request.setAttribute("message", "Cestitamo, uspjesno ste napravili svoj nalog.");
 			request.getRequestDispatcher("welcome.jsp").forward(request, response);
-		} else {
+		} else {   // if user already exists in the DB, send message to welcome.jsp
 			request.setAttribute("message1", "Zao nam je, pokusajte ponovo.");
 			request.getRequestDispatcher("welcome.jsp").forward(request, response);
 		}
