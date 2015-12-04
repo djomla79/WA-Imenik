@@ -28,19 +28,20 @@ public class DeleteUserServlet extends HttpServlet {
 		String username;
 		UserDao dao = new UserDaoImp();
 		
+		/** Get parametar username */
 		username = request.getParameter("username");
 		
 		Service service = new Service();
 		
+		/** Check if user is in the DB */
 		boolean ok = service.authenticate2(username);
-		User user = new User();
 		
-		if (ok) {
-			user = dao.getUser(username);
+		if (ok) { // if user is in the DB, delete user and send object user to userdeleted.jsp
+			User user = dao.getUser(username);
 			dao.deleteUser(username);
 			request.setAttribute("user", user);
 			request.getRequestDispatcher("userdeleted.jsp").forward(request, response);					
-		} else {
+		} else {  // if user isn't in the DB, send string message to userpage.jsp
 			request.setAttribute("message", "Korisnik ne postoji u bazi.");
 			request.getRequestDispatcher("userpage.jsp").forward(request, response);			
 		}

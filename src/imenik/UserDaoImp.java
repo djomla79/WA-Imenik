@@ -9,13 +9,40 @@ import java.util.List;
 
 /**
  * @author Todorovic Mladen
+ * 
+ * @class UserDaoImp implements interface UserDao
  *
  */
 public class UserDaoImp implements UserDao {
-
+	
+	/** Default constructor (empty) */
 	public UserDaoImp() {
 	}
 	
+	/**
+	 * Method  Adding a new User to the DB
+	 * 
+	 * @author Mladen Todorovic
+	 *
+	 * @param ime
+	 *            name of user that is going to be added to DB.
+	 * @param prezime
+	 *            last name of user that is going to be added to DB.
+	 * @param telefon
+	 *            phone of user that is going to be added to DB.
+	 * @param adresa
+	 *            address of user that is going to be added to DB.
+	 * @param email
+	 *            email of user that is going to be added to DB.
+	 * @param rodjenje
+	 *            date of birth of user that is going to be added to DB.
+	 * @param pol
+	 *            gender of user that is going to be added to DB.
+	 * @param username
+	 *            username of user that is going to be added to DB.
+	 * @param password
+	 *            password of user that is going to be added to DB.
+	 */
 	@Override
 	public void addUser(String ime, String prezime, String telefon, String adresa, String email, String rodjenje,
 			String pol, String username, String password) {
@@ -52,60 +79,29 @@ public class UserDaoImp implements UserDao {
 			}
 		}
 	}
-
-	@Override
-	public User getUserByName(String ime, String prezime) {
-
-		User user = new User();
-		/** Invoke ConnectionUtil Class to establish connection with the DB */
-		ConnectionUtil connection = new ConnectionUtil();
-		PreparedStatement ps = null;
-
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection mysqlConnect = connection.connect();
-			/**
-			 * Select user from users where ime matches ime and prezime matches
-			 * prezime
-			 */
-			ps = mysqlConnect
-					.prepareStatement("SELECT * FROM users WHERE ime ='" + ime + "', prezime ='" + prezime + "' ");
-			ResultSet rs = ps.executeQuery();
-			
-			while (rs.next()) {
-				user.setIme(rs.getString("ime"));
-				user.setPrezime(rs.getString("prezime"));
-				user.setTelefon(rs.getString("telefon"));
-				user.setAdresa(rs.getString("adresa"));
-				user.setEmail(rs.getString("email"));
-				user.setRodjenje(rs.getString("rodjenje"));
-				user.setPol(rs.getString("pol"));
-				user.setUsername(rs.getString("username"));
-				user.setPassword(rs.getString("password"));
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				/** Close connection with the DB */
-				ConnectionUtil.closeConnection();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return user;
-	}
-
+	/**
+	 * Method  Delete user from the DB
+	 *         if username matches with one in the DB,
+	 *         that User is deleted from the DB.
+	 * 
+	 * @author Mladen Todorovic
+	 * 
+	 * @param username
+	 *            username that we are going to search in DB.
+	 */
 	@Override
 	public void deleteUser(String username) {
-
+		
+		/**
+		 * Invoke ConnectionUtil Class to establish MySQL connection with the DB
+		 */
 		ConnectionUtil connection = new ConnectionUtil();
 		PreparedStatement ps = null;
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection mysqlConnect = connection.connect();
+			/** Delete user from users where username matches username*/
 			ps = mysqlConnect.prepareStatement("DELETE FROM users WHERE username = '" + username + "'");
 			ps.executeUpdate();
 		} catch (Exception e) {
@@ -119,7 +115,16 @@ public class UserDaoImp implements UserDao {
 			}
 		}
 	}
-	
+	/**
+	 * Method  Check if username exists in the DB
+	 * 
+	 * @author Mladen Todorovic
+	 * 
+	 * @param username
+	 *            username that we are going to search in DB.
+	 *            
+	 * @return true if username matches with one in the DB, otherwise false.
+	 */
 	@Override
 	public boolean isRegisteredByUsername(String username) {
 
@@ -133,15 +138,14 @@ public class UserDaoImp implements UserDao {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection mysqlConnect = connection.connect();
 			/**
-			 * Select columns `username` and `password` from the table `users`
+			 * Select columns username and password from the table users
 			 */
 			ps = mysqlConnect.prepareStatement(" SELECT username FROM users ");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				/**
-				 * Check if column "username" from "users" is equal to input's
-				 * user name, and if column "password" is equal to input's user
-				 * password
+				 * Check if column username from users is equal to input's
+				 * user name, and if column password is equal to input's user password
 				 */
 				if (rs.getString("username").equals(username)) {
 					return true;
@@ -159,7 +163,18 @@ public class UserDaoImp implements UserDao {
 		}
 		return false; // If user is not found, return false
 	}
-
+	/**
+	 * Method  Check if username & password exists in the DB
+	 * 
+	 * @author Mladen Todorovic
+	 * 
+	 * @param username
+	 *            username that we are going to search in DB.
+	 * @param password
+	 *            password that we are going to search in DB.
+	 *            
+	 * @return true if username & password matches with those in the DB, otherwise false.
+	 */
 	@Override
 	public boolean isRegistered(String username, String password) {
 
@@ -173,15 +188,14 @@ public class UserDaoImp implements UserDao {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection mysqlConnect = connection.connect();
 			/**
-			 * Select columns `username` and `password` from the table `users`
+			 * Select columns username and password from the table users
 			 */
 			ps = mysqlConnect.prepareStatement(" SELECT username, password FROM users ");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				/**
-				 * Check if column "username" from "users" is equal to input's
-				 * user name, and if column "password" is equal to input's user
-				 * password
+				 * Check if column username from users is equal to input's
+				 * user name, and if column password is equal to input's user password
 				 */
 				if (rs.getString("username").equals(username) && rs.getString("password").equals(password)) {
 					return true;
@@ -199,7 +213,19 @@ public class UserDaoImp implements UserDao {
 		}
 		return false; // If user is not found, return false
 	}
-
+	/**
+	 * Method  Check if user is Admin
+	 * 
+	 * @author Mladen Todorovic
+	 * 
+	 * @param username
+	 *            username that we are going to search in DB.
+	 * @param password
+	 *            password that we are going to search in DB.
+	 *            
+	 * @return true if username & password matches
+	 *            admin's username & password, otherwise false.
+	 */
 	@Override
 	public boolean isAdmin(String username, String password) {
 
@@ -210,20 +236,20 @@ public class UserDaoImp implements UserDao {
 		ConnectionUtil connection = new ConnectionUtil();
 		PreparedStatement ps = null;
 		
+		/** If username & password matches admin's username & password */
 		if (username.matches("djomla") && password.matches("tm")) {
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
 				Connection mysqlConnect = connection.connect();
 				/**
-				 * Select columns `username` and `password` from the table
-				 * `users`
+				 * Select columns username and password from the table users
 				 */
 				ps = mysqlConnect.prepareStatement(" SELECT username, password FROM users ");
 				ResultSet rs = ps.executeQuery();
 				while (rs.next()) {
 					/**
-					 * Check if column "username" from "users" is equal to
-					 * input's user name, and if column "password" is equal to
+					 * Check if column username from users is equal to
+					 * input's user name, and if column password is equal to
 					 * input's user password
 					 */
 					if (rs.getString("username").equals(username) && rs.getString("password").equals(password)) {
@@ -242,11 +268,19 @@ public class UserDaoImp implements UserDao {
 			}
 
 		} else {
-			ok = false; // If user is not found, return false
+			ok = false;
 		}
 		return ok;
 	}
-	
+	/**
+	 * Method  Update User in the DB
+	 *         where user's username matces username.
+	 * 
+	 * @author Mladen Todorovic
+	 *
+	 * @param user
+	 *          user that we are going to update in the DB.
+	 */
 	@Override
 	public void updateUser(User user) throws ClassNotFoundException {
 		/**
@@ -258,7 +292,7 @@ public class UserDaoImp implements UserDao {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection mysqlConnect = connection.connect();
-			/** Update the table users */
+			/** Update the table users where username matches user's username */
 			ps = mysqlConnect.prepareStatement(
 					"UPDATE users SET ime=?, prezime=?, telefon=?, adresa=?, email=?, rodjenje=?, pol=?, username=?, password=? WHERE username='"
 					+ user.getUsername() + "'");
@@ -285,47 +319,14 @@ public class UserDaoImp implements UserDao {
 			}
 		}
 	}
-
-	@Override
-	public boolean isRegisteredByName(String ime, String prezime) {
-
-		/**
-		 * Invoke ConnectionUtil Class to establish MySQL connection with the DB
-		 */
-		ConnectionUtil connection = new ConnectionUtil();
-		PreparedStatement ps = null;
-
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection mysqlConnect = connection.connect();
-			/**
-			 * Select columns `ime` and `prezime` from the table `users`
-			 */
-			ps = mysqlConnect.prepareStatement(" SELECT ime, prezime FROM users ");
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				/**
-				 * Check if column "ime" from "users" is equal to input's user
-				 * name, and if column "prezime" is equal to input's user last
-				 * name
-				 */
-				if (rs.getString("ime").equals(ime) && rs.getString("prezime").equals(prezime)) {
-					return true;
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				/** Close connection with the DB */
-				ConnectionUtil.closeConnection();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return false; // If user is not found, return false
-	}
-
+	/** 
+	 * Method Return all users from DB 
+	 * 
+	 * @author Mladen Todorovic
+	 * 
+	 * @return list of all users from DB
+	 * 
+	 * */
 	@Override
 	public List<User> getAllUsers() {
 
@@ -340,12 +341,13 @@ public class UserDaoImp implements UserDao {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection mysqlConnect = connection.connect();
-			/** Select from the table `users` */
+			/** Select from the table users */
 			ps = mysqlConnect.prepareStatement(" SELECT * FROM users ");
 			ResultSet rs = ps.executeQuery();
 
 			if (rs.next()) {
 				rs.beforeFirst();
+				/** While there's users data in the DB, add all users in the list */
 				while (rs.next()) {
 
 					User user = new User();
@@ -372,9 +374,19 @@ public class UserDaoImp implements UserDao {
 				e.printStackTrace();
 			}
 		}
+		/** Return list with all added users */
 		return list;
 	}
-
+	/**
+	 * Method  Return User from the DB
+	 * 
+	 * @author Mladen Todorovic
+	 * 
+	 * @param username
+	 *            username that we are going to search in DB.
+	 *            
+	 * @return User if username matches with username in the DB.
+	 */
 	@Override
 	public User getUser(String username) {
 
@@ -389,7 +401,7 @@ public class UserDaoImp implements UserDao {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection mysqlConnect = connection.connect();
-			/** Select `username` column from the table `users` */
+			/** Select username column from the table users */
 			ps = mysqlConnect.prepareStatement(" SELECT * FROM users WHERE username ='" + username + "'");
 			ResultSet rs = ps.executeQuery();
 
@@ -422,53 +434,16 @@ public class UserDaoImp implements UserDao {
 		}
 		return user;
 	}
-
-	@Override
-	public User getUserByUser(User user) {
-
-		/**
-		 * Invoke ConnectionUtil Class to establish MySQL connection with the DB
-		 */
-		ConnectionUtil connection = new ConnectionUtil();
-		PreparedStatement ps = null;
-
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection mysqlConnect = connection.connect();
-			/** Select from the table `users` */
-			ps = mysqlConnect.prepareStatement(" SELECT * FROM users");
-			ResultSet rs = ps.executeQuery();
-
-			if (rs.next()) {
-				rs.beforeFirst();
-				while (rs.next()) {
-
-					user.setIme(rs.getString("ime"));
-					user.setPrezime(rs.getString("prezime"));
-					user.setTelefon(rs.getString("telefon"));
-					user.setAdresa(rs.getString("adresa"));
-					user.setEmail(rs.getString("email"));
-					user.setRodjenje(rs.getString("rodjenje"));
-					user.setPol(rs.getString("pol"));
-					user.setUsername(rs.getString("username"));
-					user.setPassword(rs.getString("password"));
-
-				}
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				/** Close connection with the DB */
-				ConnectionUtil.closeConnection();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return user;
-	}
-
+	/**
+	 * Method  Return list of Users from the DB
+	 * 
+	 * @author Mladen Todorovic
+	 * 
+	 * @param search
+	 *            that we are going to search in DB.
+	 * 
+	 * @return list of user(s) if param search matches with those in the DB.
+	 */
 	@Override
 	public List<User> searchUsers(String search) {
 		
@@ -496,6 +471,8 @@ public class UserDaoImp implements UserDao {
 					String email = rs.getString("email");
 					String rodjenje = rs.getString("rodjenje");
 					String pol = rs.getString("pol");
+					/** If ime or prezime or telefon or adresa or email or rodjenje or pol
+					 * matches those from the DB, get that user(s) from the DB */
 					if (ime.equals(search) || prezime.equals(search) || telefon.equals(search) || adresa.equals(search)
 							|| email.equals(search) || rodjenje.equals(search) || pol.equals(search)) {
 						User user = new User();
@@ -521,9 +498,19 @@ public class UserDaoImp implements UserDao {
 				e.printStackTrace();
 			}
 		}
+		/** Return list with added user(s) */
 		return list;
 	}
-
+	/**
+	 * Method  Check if search exists in the DB
+	 * 
+	 * @author Mladen Todorovic
+	 * 
+	 * @param search
+	 *            that we are going to search in DB.
+	 * 
+	 * @return true if search exists in the DB, otherwise false.
+	 */
 	@Override
 	public boolean searchIsValid(String search) {
 		/**
@@ -549,6 +536,8 @@ public class UserDaoImp implements UserDao {
 				String email = rs.getString("email");
 				String rodjenje = rs.getString("rodjenje");
 				String pol = rs.getString("pol");
+				/** If ime or prezime or telefon or adresa or email or rodjenje or pol
+				 *  from the DB matches param search, return true */
 				if (ime.equals(search) || prezime.equals(search) || telefon.equals(search) || adresa.equals(search)
 						|| email.equals(search) || rodjenje.equals(search) || pol.equals(search)) {
 					return true;
@@ -564,6 +553,6 @@ public class UserDaoImp implements UserDao {
 				e.printStackTrace();
 			}
 		}
-		return false; // If user is not found, return false
+		return false; // If match is not found, return false
 	}
 }

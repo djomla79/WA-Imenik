@@ -24,24 +24,16 @@ public class GetAllUsersServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		UserDao dao = new UserDaoImp();
+		
+		/** Get list of all users from the DB */
 		List<User> list = dao.getAllUsers();
 		
-		if (!list.isEmpty()) {
+		if (!list.isEmpty()) { // If list isn't empty, send list to getallusers.jsp
 			request.setAttribute("users", list);
 			request.getRequestDispatcher("getallusers.jsp").forward(request, response);
-			//response.sendRedirect("getallusers.jsp");
-		} else {
+		} else {               // if list is empty, redirect to userpage.jsp
 			response.sendRedirect("userpage.jsp");
 		}
-
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
 
 	}
 

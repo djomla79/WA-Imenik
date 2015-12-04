@@ -6,9 +6,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * @author Todorovic Mladen
+ * @author Mladen Todorovic
  * 
- * @class ConnectionUtil za povezivanje sa bazom
+ * @class ConnectionUtil to establish MySQL connection with the DB.
  *
  */
 public class ConnectionUtil {
@@ -34,14 +34,6 @@ public class ConnectionUtil {
 
 	public static void closeConnection() throws SQLException {
 		conn.close();
-	}
-
-	public static String getUser() {
-		return USER;
-	}
-
-	public static String getPass() {
-		return PASS;
 	}
 
 }

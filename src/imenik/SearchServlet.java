@@ -29,18 +29,21 @@ public class SearchServlet extends HttpServlet {
 		
 		String search;
 		
+		/** Get search parameter */
 		search = request.getParameter("search");
 		
 		UserDao dao = new UserDaoImp();
 		Service service = new Service();
+		/** Check if search exists in the DB */
 		boolean ok = service.search(search);
 		
+		/** Get list of user(s) from the DB */
 		List<User> list = dao.searchUsers(search);
 		
-		if (ok && !list.isEmpty()) {
+		if (ok && !list.isEmpty()) { // if search exists in the DB & list isn't empty, send list of user(s) to searchlist.jsp
 			request.setAttribute("searchusers", list);
 			request.getRequestDispatcher("searchlist.jsp").forward(request, response);
-		} else {
+		} else {                     // if search doesn't exist in the DB or list is empty, send a message to search.jsp
 			request.setAttribute("message", "Unos ne postoji u bazi.");
 			request.getRequestDispatcher("search.jsp").forward(request, response);
 		}
