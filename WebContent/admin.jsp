@@ -40,6 +40,7 @@
 		<div id="log">
 			<ul>
 				<li><a href="GetAllUsersServlet">Lista svih korisnika</a></li>
+				<li><a href="getuser.jsp">Ispis korisnika po imenu i prezimenu</a></li>
 				<li><a href="deleteuser.jsp">Brisanje korisnika</a></li>
 				<li><a href="updateuser.jsp">Update korisnika</a></li>
 			</ul>

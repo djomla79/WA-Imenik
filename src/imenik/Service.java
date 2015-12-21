@@ -101,4 +101,15 @@ public class Service {
 		}
 	}
 	
+	public boolean imePrezime(String ime, String prezime) {
+
+		UserDao dao = new UserDaoImp();
+
+		if (dao.isRegisteredByName(ime, prezime)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 }

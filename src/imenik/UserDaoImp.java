@@ -555,4 +555,89 @@ public class UserDaoImp implements UserDao {
 		}
 		return false; // If match is not found, return false
 	}
+	
+	@Override
+	public boolean isRegisteredByName(String ime, String prezime) {
+
+		/**
+		 * Invoke ConnectionUtil Class to establish MySQL connection with the DB
+		 */
+		ConnectionUtil connection = new ConnectionUtil();
+		PreparedStatement ps = null;
+
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection mysqlConnect = connection.connect();
+			/**
+			 * Select columns `ime` and `prezime` from the table `users`
+			 */
+			ps = mysqlConnect.prepareStatement(" SELECT ime, prezime FROM users ");
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				/**
+				 * Check if column "ime" from "users" is equal to input's user
+				 * name, and if column "prezime" is equal to input's user last
+				 * name
+				 */
+				if (rs.getString("ime").equals(ime) && rs.getString("prezime").equals(prezime)) {
+					return true;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				/** Close connection with the DB */
+				ConnectionUtil.closeConnection();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return false; // If user is not found, return false
+	}
+	
+	@Override
+	public User getUserByName(String ime, String prezime) {
+
+		User user = new User();
+		/** Invoke ConnectionUtil Class to establish connection with the DB */
+		ConnectionUtil connection = new ConnectionUtil();
+		PreparedStatement ps = null;
+
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection mysqlConnect = connection.connect();
+			/**
+			 * Select user from users where ime matches ime and prezime matches prezime
+			 */
+			ps = mysqlConnect
+					.prepareStatement("SELECT * FROM users WHERE ime ='" + ime + "' && prezime ='" + prezime + "' ");
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				rs.beforeFirst();
+				while (rs.next()) {
+					user.setIme(rs.getString("ime"));
+					user.setPrezime(rs.getString("prezime"));
+					user.setTelefon(rs.getString("telefon"));
+					user.setAdresa(rs.getString("adresa"));
+					user.setEmail(rs.getString("email"));
+					user.setRodjenje(rs.getString("rodjenje"));
+					user.setPol(rs.getString("pol"));
+					user.setUsername(rs.getString("username"));
+					user.setPassword(rs.getString("password"));
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				/** Close connection with the DB */
+				ConnectionUtil.closeConnection();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return user;
+	}
 }

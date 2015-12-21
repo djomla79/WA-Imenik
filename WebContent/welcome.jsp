@@ -26,13 +26,13 @@
 	
 	<div class="container">
 		<div id="header1">
-			<div id="text">Da bi se registrovali, izaberite opciju sign-up.</div>
-			<div id="text">Ako ste vec registrovani, izaberite opciju log-in.</div>
+			<div id="text">Da bi se registrovali, izaberite opciju registracija.</div>
+			<div id="text">Ako ste vec registrovani, izaberite opciju nalog.</div>
 		</div>
 		<div id="log">
 			<ul>
-				<li><a href="signupuser.jsp">Sign up</a></li>
-				<li><a href="login.jsp">Log in</a></li>
+				<li><a href="signupuser.jsp">Registracija</a></li>
+				<li><a href="login.jsp">Nalog</a></li>
 			</ul>
 		</div>
 	</div>

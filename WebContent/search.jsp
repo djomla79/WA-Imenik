@@ -26,7 +26,7 @@
 	    </div>
 	    <div>
 	      <ul class="nav navbar-nav">
-	        <li><a href="userpage.jsp">User Page</a></li>
+	        <li><a href="userpage.jsp">Korisnik</a></li>
 	        <li><a href="/WA-Imenik/LogOutServlet">Odjava</a></li>
  	    </ul>
 	    </div>

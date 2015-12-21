@@ -20,6 +20,8 @@ public interface UserDao {
 	
 	public User getUser(String username);
 	
+	public User getUserByName(String ime, String prezime);
+	
 	public void deleteUser(String username);
 	
 	public List<User> searchUsers(String search);
@@ -29,6 +31,8 @@ public interface UserDao {
 	public boolean isRegisteredByUsername(String username);
 	
 	public boolean isAdmin(String username, String password);
+	
+	public boolean isRegisteredByName(String ime, String prezime);
 	
 	public void updateUser(User user) throws ClassNotFoundException;
 
